@@ -281,7 +281,7 @@ export const quizQuestions = [
   },
   {
     id: 18,
-    type: "single-choice",
+    type: "multi-choice",
     question: "Do you have pain in any of these areas?",
     description: "Select all that apply",
     options: [

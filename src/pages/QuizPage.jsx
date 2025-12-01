@@ -16,24 +16,40 @@ export default function QuizPage() {
   const currentQuestion = quizQuestions[quiz.currentIndex - 1];
   const totalQuestions = quizQuestions.length;
 
+  // const handleContinue = (questionId, answer) => {
+  //   // Save answer
+  //   saveAnswer(questionId, answer);
+
+  //   // Update gender if gender question
+  //   if (currentQuestion.type === "gender-selection") {
+  //     updateQuiz({ gender: answer });
+  //   }
+
+  //   // Check if quiz complete
+  //   if (quiz.currentIndex >= totalQuestions) {
+  //     console.log("Quiz Complete!", { ...quiz.answers, [questionId]: answer });
+  //     window.location.href = "/promotions";
+  //     return;
+  //   }
+
+  //   // Move to next
+  //   next();
+  // };
+
   const handleContinue = (questionId, answer) => {
-    // Save answer
-    saveAnswer(questionId, answer);
+    const isLast = quiz.currentIndex >= totalQuestions;
 
-    // Update gender if gender question
-    if (currentQuestion.type === "gender-selection") {
-      updateQuiz({ gender: answer });
-    }
+    updateQuiz({
+      answers: { ...quiz.answers, [questionId]: answer },
+      gender:
+        currentQuestion.type === "gender-selection" ? answer : quiz.gender,
+      previousIndex: quiz.currentIndex,
+      currentIndex: isLast ? quiz.currentIndex : quiz.currentIndex + 1,
+    });
 
-    // Check if quiz complete
-    if (quiz.currentIndex >= totalQuestions) {
-      console.log("Quiz Complete!", { ...quiz.answers, [questionId]: answer });
+    if (isLast) {
       window.location.href = "/promotions";
-      return;
     }
-
-    // Move to next
-    next();
   };
 
   const handleBack = () => {

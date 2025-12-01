@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 export default function DateInput({ question, onContinue, answers }) {
   const [value, setValue] = useState("");
@@ -44,34 +47,59 @@ export default function DateInput({ question, onContinue, answers }) {
         </Typography>
       )}
 
-      <TextField
-        fullWidth
-        type="date"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        InputLabelProps={{ shrink: true }}
+      <Box
         sx={{
-          "& .MuiOutlinedInput-root": {
-            fontSize: "1.1rem",
-            "&:hover fieldset": { borderColor: "#7061a2" },
-            "&.Mui-focused fieldset": { borderColor: "#7061a2" },
-          },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          mt: 10,
         }}
-      />
+      >
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            label="Select event date"
+            value={value ? new Date(value) : null}
+            onChange={(newValue) => {
+              const formatted = newValue
+                ? newValue.toISOString().split("T")[0]
+                : "";
+              setValue(formatted);
+            }}
+            slotProps={{
+              textField: {
+                placeholder: "Select event date",
+                sx: {
+                  "& .MuiOutlinedInput-root": {
+                    fontSize: "1.1rem",
+                    "&:hover fieldset": { borderColor: "#7061a2" },
+                    "&.Mui-focused fieldset": { borderColor: "#7061a2" },
+                  },
+                },
+              },
+              popper: {
+                placement: "bottom-start", // <- force below input
+              },
+            }}
+          />
+        </LocalizationProvider>
+      </Box>
 
       <Box sx={{ textAlign: "center", mt: 4 }}>
         <Button
           variant="contained"
           onClick={handleContinue}
-          disabled={!value && !question.allowSkip}
+          disabled={!value}
           sx={{
+            mt: 10,
+            width: { xs: "100%", sm: "100%", lg: "50%" },
             px: 5,
             py: 1.3,
             borderRadius: "10px",
             backgroundColor: "#F68D2B",
             fontSize: "18px",
+            fontWeight: "bold",
             "&:hover": { backgroundColor: "#ac621e" },
-            "&.Mui-disabled": { backgroundColor: "#ccc" },
           }}
         >
           Continue
@@ -87,6 +115,7 @@ export default function DateInput({ question, onContinue, answers }) {
               color: "#999",
               textTransform: "none",
               fontSize: "0.95rem",
+              textDecoration: "underline",
             }}
           >
             Skip this step

@@ -68,6 +68,7 @@ export default function QuestionRouter({
   return (
     <Card
       sx={{
+        minHeight: { sm: "auto", md: "auto", lg: "40rem" },
         p: { xs: 3, md: 4 },
         borderRadius: 5,
         boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
