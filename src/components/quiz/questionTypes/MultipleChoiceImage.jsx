@@ -144,7 +144,6 @@ export default function MultipleChoiceImage({
                     position: "relative",
                   }}
                 >
-                  {/* Image Left */}
                   <Box
                     sx={{
                       width: "80px",
@@ -182,7 +181,6 @@ export default function MultipleChoiceImage({
                     )}
                   </Box>
 
-                  {/* Text */}
                   <Typography
                     sx={{
                       fontSize: "1rem",

@@ -17,12 +17,10 @@ export default function SingleChoiceImage({
   const optionCount = question.options.length;
 
   const getGridSize = () => {
-    // 4 or fewer options → ALWAYS 1 column
     if (optionCount <= 4) {
       return { xs: 12, sm: 12, md: 12, lg: 12 };
     }
 
-    // More than 4 → 2 columns (max 8 options)
     return { xs: 12, sm: 6, md: 6, lg: 6 };
   };
 
@@ -91,7 +89,6 @@ export default function SingleChoiceImage({
                     gap: 2,
                   }}
                 >
-                  {/* Image on left */}
                   <Box
                     sx={{
                       width: "80px",
@@ -113,7 +110,6 @@ export default function SingleChoiceImage({
                     />
                   </Box>
 
-                  {/* Text at right */}
                   <Typography
                     sx={{
                       fontSize: "1rem",

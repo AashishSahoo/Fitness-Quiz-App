@@ -1,9 +1,14 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import CurrentBodyImg from "../../../assets/quizQuestion/Q13/Q13_Currentbody1.png";
-import DreamBodyImg from "../../../assets/quizQuestion/Q13/Q13_Dreambody.png";
+import CurrentBodyMaleImg from "../../../assets/quizQuestion/Q13/Q13M_Currentbody.png";
 
-export default function InfoPage({ question, onContinue }) {
+import DreamBodyMaleImg from "../../../assets/quizQuestion/Q13/Q13M_Dreambody.png";
+import CurrentBodyFemaleImg from "../../../assets/quizQuestion/Q13/Q13F_Currentbody.png";
+import DreamBodyFemaleImg from "../../../assets/quizQuestion/Q13/Q13F_Dreambody.png";
+
+export default function InfoPage({ question, onContinue, answers }) {
+  const gender = answers[1];
+
   return (
     <Box sx={{ textAlign: "center", py: 2 }}>
       <Typography
@@ -28,20 +33,18 @@ export default function InfoPage({ question, onContinue }) {
         {question.description}
       </Typography>
 
-      {/* Images + SVG row */}
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: 2, // spacing between elements
+          gap: 2,
           mb: 4,
         }}
       >
-        {/* Current Body */}
         <Box
           component="img"
-          src={CurrentBodyImg}
+          src={gender === "female" ? CurrentBodyFemaleImg : CurrentBodyMaleImg}
           alt="currentBody"
           sx={{
             width: { xs: "20%", sm: "20%" },
@@ -51,7 +54,6 @@ export default function InfoPage({ question, onContinue }) {
           }}
         />
 
-        {/* Inline SVG */}
         <Box
           sx={{
             display: "flex",
@@ -94,10 +96,9 @@ export default function InfoPage({ question, onContinue }) {
           </svg>
         </Box>
 
-        {/* Dream Body */}
         <Box
           component="img"
-          src={DreamBodyImg}
+          src={gender === "female" ? DreamBodyFemaleImg : DreamBodyMaleImg}
           alt="dreamBody"
           sx={{
             width: { xs: "20%", sm: "20%" },

@@ -30,7 +30,6 @@ export default function MeasurementInput({ question, onContinue, answers }) {
     }
   }, [question.id, answers]);
 
-  // BMI CALCULATION (ONLY FOR Q11)
   const heightData = answers[10];
   const showBMI = question.id === 11 && heightData;
 

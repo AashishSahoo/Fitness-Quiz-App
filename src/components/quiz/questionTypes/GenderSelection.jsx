@@ -16,7 +16,6 @@ export default function GenderSelection({ question, onContinue, answers }) {
 
   return (
     <Box sx={{ mt: 3 }}>
-      {/* Question */}
       <Box sx={{ textAlign: "center", mb: { xs: 3, sm: 4 } }}>
         <Typography
           variant="h4"
@@ -60,7 +59,6 @@ export default function GenderSelection({ question, onContinue, answers }) {
         </Typography>
       </Box>
 
-      {/* Options Row */}
       <Box
         sx={{
           display: "flex",
@@ -95,7 +93,6 @@ export default function GenderSelection({ question, onContinue, answers }) {
               },
             }}
           >
-            {/* FLOATING IMAGE (UNDER the purple bar) */}
             <Box
               sx={{
                 position: "absolute",
@@ -104,7 +101,7 @@ export default function GenderSelection({ question, onContinue, answers }) {
                 maxWidth: "200px",
                 pointerEvents: "none",
                 userSelect: "none",
-                zIndex: 1, // IMAGE UNDER the purple bar
+                zIndex: 1,
               }}
             >
               <Box
@@ -118,10 +115,8 @@ export default function GenderSelection({ question, onContinue, answers }) {
               />
             </Box>
 
-            {/* SPACER FOR HEIGHT */}
             <Box sx={{ width: "100%", paddingTop: "45%" }} />
 
-            {/* PURPLE LABEL (ON TOP of the image) */}
             <Box
               sx={{
                 width: "100%",
@@ -131,7 +126,7 @@ export default function GenderSelection({ question, onContinue, answers }) {
                 borderRadius: "0 0 18px 18px",
                 px: 2,
                 position: "relative",
-                zIndex: 5, // LABEL ABOVE the image
+                zIndex: 5,
               }}
             >
               <Typography
@@ -149,7 +144,6 @@ export default function GenderSelection({ question, onContinue, answers }) {
         ))}
       </Box>
 
-      {/* Prefer not to say */}
       {question.preferNotToSay && (
         <Box sx={{ mt: 7, mb: 5, textAlign: "center" }}>
           <Typography

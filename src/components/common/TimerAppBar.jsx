@@ -30,7 +30,7 @@ export default function TimerAppBar() {
       elevation={0}
       sx={{
         backgroundColor: "#000",
-        borderBottom: "none", // REMOVED WHITE LINE
+        borderBottom: "none",
         py: 1.5,
         zIndex: 1300,
       }}

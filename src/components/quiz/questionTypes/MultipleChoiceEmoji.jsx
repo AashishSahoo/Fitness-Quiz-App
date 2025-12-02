@@ -18,7 +18,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
 
   const optionCount = question.options.length;
 
-  // GRID LOGIC (same as image)
   const getGridSize = () => {
     if (optionCount <= 4) {
       return { xs: 12, sm: 12, md: 12, lg: 12 };
@@ -28,7 +27,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
 
   const gridSize = getGridSize();
 
-  // MULTI-SELECT + NONE LOGIC
   const handleToggle = (value) => {
     const isNone = value === "none";
     const hasNone = selected.includes("none");
@@ -90,7 +88,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
         )}
       </Box>
 
-      {/* OPTIONS */}
       <Grid container spacing={2} justifyContent="center">
         {question.options.map((option) => {
           const [emoji, ...textParts] = option.label.split(" ");
@@ -132,7 +129,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
                     gap: 2,
                   }}
                 >
-                  {/* EMOJI LEFT BOX (replaces image) */}
                   <Box
                     sx={{
                       width: "70px",
@@ -148,7 +144,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
                     {emoji}
                   </Box>
 
-                  {/* Text */}
                   <Typography
                     sx={{
                       fontSize: "1rem",
@@ -160,7 +155,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
                     {text}
                   </Typography>
 
-                  {/* CUSTOM CHECK MARK (matches Radio style like Image version) */}
                   <Box
                     sx={{
                       width: "22px",
@@ -179,7 +173,6 @@ export default function MultipleChoiceEmoji({ question, onContinue, answers }) {
         })}
       </Grid>
 
-      {/* Continue Button */}
       <Box sx={{ textAlign: "center", mt: 4 }}>
         <Button
           variant="contained"

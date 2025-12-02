@@ -8,8 +8,10 @@ import SecureInfoSection from "../components/common/SecureInfoSection";
 import Footer from "../components/common/Footer";
 import { quizQuestions } from "../data/quizQuestions";
 import useQuizStorage from "../hooks/useQuizStorage";
+import { useNavigate } from "react-router-dom";
 
 export default function QuizPage() {
+  const navigate = useNavigate();
   const { quiz, saveAnswer, next, back, updateQuiz } = useQuizStorage();
   const [language, setLanguage] = React.useState("en");
 
@@ -48,7 +50,7 @@ export default function QuizPage() {
     });
 
     if (isLast) {
-      window.location.href = "/promotions";
+      navigate("/promotions");
     }
   };
 

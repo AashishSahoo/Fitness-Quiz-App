@@ -12,11 +12,9 @@ export default function SingleChoiceEmoji({ question, onContinue, answers }) {
   const optionCount = question.options.length;
 
   const getGridSize = () => {
-    // 4 or fewer options → 1 column
     if (optionCount <= 4) {
       return { xs: 12, sm: 12, md: 12, lg: 12 };
     }
-    // More than 4 → 2 columns
     return { xs: 12, sm: 6, md: 6, lg: 6 };
   };
 
@@ -82,7 +80,6 @@ export default function SingleChoiceEmoji({ question, onContinue, answers }) {
                     gap: 2,
                   }}
                 >
-                  {/* Emoji Left Box */}
                   <Box
                     sx={{
                       width: "70px",
@@ -97,7 +94,6 @@ export default function SingleChoiceEmoji({ question, onContinue, answers }) {
                     {emoji}
                   </Box>
 
-                  {/* Text Right */}
                   <Typography
                     sx={{
                       fontSize: "1rem",

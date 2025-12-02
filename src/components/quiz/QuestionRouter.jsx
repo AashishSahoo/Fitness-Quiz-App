@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Card, LinearProgress, Button, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
 
-// Import question type components
 import GenderSelection from "./questionTypes/GenderSelection";
 import SingleChoiceEmoji from "./questionTypes/SingleChoiceEmoji";
 import SingleChoiceImage from "./questionTypes/SingleChoiceImage";
@@ -74,7 +73,6 @@ export default function QuestionRouter({
         boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
       }}
     >
-      {/* Progress Bar - Always Visible */}
       <Box>
         <LinearProgress
           variant="determinate"
@@ -127,7 +125,6 @@ export default function QuestionRouter({
         </Box>
       </Box>
 
-      {/* Dynamic Question Component */}
       {renderQuestion()}
     </Card>
   );

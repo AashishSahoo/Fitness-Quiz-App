@@ -13,9 +13,6 @@ export default function Footer() {
       <Box
         sx={{
           display: "flex",
-
-          // Small: column (text above icons)
-          // Medium & Large: row (text + icons same row)
           flexDirection: { xs: "column", md: "row" },
 
           alignItems: "center",
@@ -23,7 +20,6 @@ export default function Footer() {
           textAlign: { xs: "center", md: "left" },
         }}
       >
-        {/* TEXT */}
         <Typography
           variant="body1"
           sx={{
@@ -37,13 +33,12 @@ export default function Footer() {
           As seen on:
         </Typography>
 
-        {/* ICONS ROW */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
             gap: 3,
-            flexWrap: "nowrap", // ALWAYS keep icons in same row
+            flexWrap: "nowrap",
             justifyContent: "center",
             alignItems: "center",
             mx: 3,

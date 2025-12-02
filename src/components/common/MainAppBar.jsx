@@ -9,6 +9,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import AppLogo from "../../assets/AppLogo.svg";
 
 export default function MainAppBar({ language, onLanguageChange }) {
   const flags = {
@@ -35,29 +36,34 @@ export default function MainAppBar({ language, onLanguageChange }) {
 
   return (
     <AppBar
-      position="static" // KEEP IT STATIC SO IT SCROLLS
+      position="static"
       elevation={0}
       sx={{
         backgroundColor: "#4e4371",
-        borderBottom: "none", // REMOVED WHITE LINE
+        borderBottom: "none",
         py: 1.3,
       }}
     >
       <Container maxWidth="lg">
         <Grid container alignItems="center" justifyContent="space-between">
-          <Grid item xs={4} sm={3} md={2}>
-            <Box display="flex" alignItems="center">
+          <Grid item xs={12} sm={12} md={2}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}
+            >
               <img
-                src="/your-logo.png"
+                src={AppLogo}
                 alt="logo"
                 style={{ height: "32px", objectFit: "contain" }}
               />
             </Box>
           </Grid>
 
-          {/* CENTER SECTION - Reviews */}
           <Grid
             item
+            xs={0}
+            sm={0}
             md={6}
             sx={{
               display: { xs: "none", md: "flex" },
@@ -131,9 +137,10 @@ export default function MainAppBar({ language, onLanguageChange }) {
             </Typography>
           </Grid>
 
-          {/* RIGHT - Language Select */}
           <Grid
             item
+            xs={0}
+            sm={0}
             md={2}
             sx={{
               display: { xs: "none", md: "flex" },

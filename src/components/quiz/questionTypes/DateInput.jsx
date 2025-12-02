@@ -78,7 +78,7 @@ export default function DateInput({ question, onContinue, answers }) {
                 },
               },
               popper: {
-                placement: "bottom-start", // <- force below input
+                placement: "bottom-start",
               },
             }}
           />

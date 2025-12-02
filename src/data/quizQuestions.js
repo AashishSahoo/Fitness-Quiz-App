@@ -382,8 +382,6 @@ export const quizQuestions = [
     type: "summary-page",
     question: "Your Wellness Profile",
     description: "You have great potential to crush your goals!",
-    subDescription:
-      "Based on Wall Pilates historical data, men in their 20s can drastically improve their hormonal balance and start burning off excess weight rapidly.",
     showBMI: true,
     showProfile: true,
   },

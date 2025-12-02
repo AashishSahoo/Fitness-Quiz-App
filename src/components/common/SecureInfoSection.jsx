@@ -14,7 +14,6 @@ export default function SecureInfoSection() {
         color: "#fff",
       }}
     >
-      {/* Left Section */}
       <Box
         sx={{
           display: "flex",
@@ -27,7 +26,6 @@ export default function SecureInfoSection() {
         </Typography>
       </Box>
 
-      {/* Right Section — Replace icons as needed */}
       <Box
         sx={{
           display: "flex",
