@@ -92,7 +92,6 @@ export default function ReviewCard() {
           </Box>
         </Box>
 
-        {/* Review Text */}
         <Typography
           sx={{
             mt: 1.5,
@@ -106,7 +105,6 @@ export default function ReviewCard() {
           Guess who is ready for beach holidays this year haha x
         </Typography>
 
-        {/* Footer Buttons */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
           <IconButton size="small">
             <Icon icon="mdi:heart-outline" width="20" />

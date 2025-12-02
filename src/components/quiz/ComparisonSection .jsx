@@ -192,7 +192,6 @@ export default function ComparisonSection() {
           </Box>
         </Box>
 
-        {/* Slider dots */}
         <Box
           sx={{
             display: "flex",
