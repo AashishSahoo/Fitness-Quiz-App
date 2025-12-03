@@ -46,5 +46,10 @@ export default function useQuizStorage() {
     });
   };
 
-  return { quiz, updateQuiz, saveAnswer, next, back };
+  return {
+    quiz,
+    updateQuiz,
+    // saveAnswer, next,
+    back,
+  };
 }

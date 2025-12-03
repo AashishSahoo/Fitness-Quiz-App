@@ -13,7 +13,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function QuizPage() {
   const navigate = useNavigate();
-  const { quiz, back, updateQuiz } = useQuizStorage();
+  const {
+    quiz,
+    // saveAnswer, next,
+    back,
+    updateQuiz,
+  } = useQuizStorage();
   const [language, setLanguage] = React.useState("en");
 
   const currentQuestion = quizQuestions[quiz.currentIndex - 1];
