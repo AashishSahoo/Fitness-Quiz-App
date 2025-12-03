@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container } from "@mui/material";
 import TimerAppBar from "../components/common/TimerAppBar";
 import MainAppBar from "../components/common/MainAppBar";
+
 import Header from "../components/common/Header";
 import QuestionRouter from "../components/quiz/QuestionRouter";
 import SecureInfoSection from "../components/common/SecureInfoSection";
@@ -12,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function QuizPage() {
   const navigate = useNavigate();
-  const { quiz, saveAnswer, next, back, updateQuiz } = useQuizStorage();
+  const { quiz, back, updateQuiz } = useQuizStorage();
   const [language, setLanguage] = React.useState("en");
 
   const currentQuestion = quizQuestions[quiz.currentIndex - 1];

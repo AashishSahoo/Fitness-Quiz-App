@@ -56,7 +56,7 @@ export default function Footer() {
             height="80"
             style={{ color: "#fff" }}
           />
-          <Icon
+          {/* <Icon
             icon="arcticons:usaa"
             width="80"
             height="80"
@@ -67,7 +67,7 @@ export default function Footer() {
             width="80"
             height="80"
             style={{ color: "#fff" }}
-          />
+          /> */}
         </Box>
       </Box>
     </Container>

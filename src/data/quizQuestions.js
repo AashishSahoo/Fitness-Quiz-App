@@ -1,4 +1,3 @@
-// quizQuestions.js - Complete questions configuration
 import Q1Male from "../assets/quizQuestion/Q1/Q1Male.png";
 import Q1Female from "../assets/quizQuestion/Q1/Q1Female.png";
 

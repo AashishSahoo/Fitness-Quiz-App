@@ -23,21 +23,21 @@ export default function useQuizStorage() {
     });
   };
 
-  const saveAnswer = (qid, data) => {
-    updateQuiz({
-      answers: {
-        ...quiz.answers,
-        [qid]: data,
-      },
-    });
-  };
+  // const saveAnswer = (qid, data) => {
+  //   updateQuiz({
+  //     answers: {
+  //       ...quiz.answers,
+  //       [qid]: data,
+  //     },
+  //   });
+  // };
 
-  const next = () => {
-    updateQuiz({
-      previousIndex: quiz.currentIndex,
-      currentIndex: quiz.currentIndex + 1,
-    });
-  };
+  // const next = () => {
+  //   updateQuiz({
+  //     previousIndex: quiz.currentIndex,
+  //     currentIndex: quiz.currentIndex + 1,
+  //   });
+  // };
 
   const back = () => {
     updateQuiz({
