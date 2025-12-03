@@ -1,4 +1,4 @@
-import TimerAppBar from "../components/common/TimerAppBar";
+import TimerAppBar from "../components/promotion/TimerAppBar";
 import MainAppBar from "../components/common/MainAppBar";
 import { Box, Container, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
@@ -11,12 +11,12 @@ import CurrentBodyFemaleImg from "../assets/quizQuestion/Q13/Q13F_Currentbody.pn
 import DreamBodyFemaleImg from "../assets/quizQuestion/Q13/Q13F_Dreambody.png";
 import DreamBodyMaleImg from "../assets/quizQuestion/Q13/Q13M_Dreambody.png";
 import EmailCaptureDialog from "../components/common/EmailCaptureDialog";
-
+import Section1 from "../components/promotion/Section1";
 export default function Promotions() {
   const [language, setLanguage] = React.useState("en");
   const [activeSlide, setActiveSlide] = useState(0);
   const answers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
-  const [openDialog, setOpenDialog] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,25 +35,18 @@ export default function Promotions() {
   const targetDate = new Date();
   targetDate.setMonth(targetDate.getMonth() + 1);
 
-  const formattedDate = targetDate.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
   const handleEmailSubmit = (email) => {
     console.log("Email submitted:", email);
-    setOpenDialog(true);
+    setOpenDialog(false);
   };
 
   return (
     <>
       <Box sx={{ minHeight: "100vh", backgroundColor: "#fff" }}>
         <TimerAppBar />
-        <Box sx={{ height: { xs: "75px", sm: "45px" } }} />
+        <Box sx={{ height: { xs: "75px", sm: "75px" } }} />
 
-        <Box>
-          <MainAppBar language={language} onLanguageChange={setLanguage} />
+        {/* <Box>
           <Box sx={{ textAlign: "center", py: 2 }}>
             <Box
               sx={{
@@ -176,7 +169,9 @@ export default function Promotions() {
           {/* <SecureInfoSection />
           <Footer />
            */}
-        </Box>
+        {/* </Box> */}
+
+        <Section1 />
       </Box>
 
       <EmailCaptureDialog open={openDialog} onSubmit={handleEmailSubmit} />
