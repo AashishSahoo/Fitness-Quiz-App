@@ -1,5 +1,10 @@
 import BeforeAfterImg from "../../assets/pages/promotion/Section1Before_After.webp";
 
+import FoxLogo from "../../assets/FoxLogo.svg";
+import BusinessInsiderLogo from "../../assets/BusinessInsiderLogo.svg";
+import USATodayLogo from "../../assets/USATodayLogo.svg";
+import YahooNewsLogo from "../../assets/YahooNewsLogo.svg";
+
 import React, { useState } from "react";
 import {
   Box,
@@ -13,6 +18,7 @@ import {
   ListItemText,
   Checkbox,
   Link,
+  Chip,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 
@@ -60,14 +66,14 @@ export default function Section1() {
   ];
 
   const mediaLogos = [
-    { name: "USA Today", icon: "simple-icons:usatoday" },
-    { name: "Yahoo", icon: "simple-icons:yahoo" },
-    { name: "Fox News", icon: "simple-icons:fox" },
-    { name: "Business Insider", icon: "fa6-solid:newspaper" },
+    { src: FoxLogo },
+    { src: BusinessInsiderLogo },
+    { src: USATodayLogo },
+    { src: YahooNewsLogo },
   ];
 
   return (
-    <Box sx={{ py: 6, backgroundColor: "#f9f9f9" }}>
+    <Box sx={{ py: 6, backgroundColor: "#fff" }}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Left Side - Images */}
@@ -75,7 +81,6 @@ export default function Section1() {
             <Box
               sx={{
                 display: { xs: "block", md: "block" },
-                borderRadius: 2,
                 overflow: "hidden",
               }}
             >
@@ -102,7 +107,7 @@ export default function Section1() {
                   height: 90,
                   minWidth: 90,
                   borderRadius: "50%",
-                  backgroundColor: "#ddd",
+                  backgroundColor: "#DDDDDD",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -365,14 +370,14 @@ export default function Section1() {
                         <span
                           style={{
                             textDecoration: "line-through",
-                            color: "#999",
+                            color: "#ff5039",
                             fontSize: 14,
                             marginRight: 8,
                           }}
                         >
                           {plan.originalPrice}
                         </span>
-                        <span style={{ fontWeight: 700, color: "#06D300" }}>
+                        <span style={{ fontWeight: 700, color: "#000" }}>
                           {plan.discountedPrice}
                         </span>
                       </Typography>
@@ -404,7 +409,12 @@ export default function Section1() {
                           {plan.perDayOriginal}
                         </span>{" "}
                         <span style={{ fontWeight: 700, fontSize: 18 }}>
-                          {plan.perDayDiscounted}
+                          <Chip
+                            label={plan.perDayDiscounted}
+                            sx={{ backgroundColor: "#7061a2", color: "#fff" }}
+                          />
+
+                          {/* {plan.perDayDiscounted} */}
                         </span>{" "}
                         <span style={{ fontSize: 12 }}>per day</span>
                       </Typography>
@@ -416,19 +426,20 @@ export default function Section1() {
                           textTransform: "none",
                           fontWeight: 700,
                           backgroundColor:
+                            // transparent
                             plan.buttonVariant === "contained"
-                              ? "#F68D2B"
-                              : "transparent",
+                              ? "transparent"
+                              : "#F68D2B",
                           color:
                             plan.buttonVariant === "contained"
-                              ? "#fff"
-                              : "#F68D2B",
+                              ? "#F68D2B"
+                              : "#fff",
                           borderColor: "#F68D2B",
                           "&:hover": {
                             backgroundColor:
                               plan.buttonVariant === "contained"
-                                ? "#ac621e"
-                                : "transparent",
+                                ? "transparent"
+                                : "#ac621e",
                             borderColor: "#ac621e",
                           },
                         }}
@@ -495,11 +506,13 @@ export default function Section1() {
               cancel. Unsubscribe anytime.
             </Typography>
           </Grid>
+
           <Grid item sm={12} lg={12}>
-            {/* As Seen On - Desktop */}
+            {/* As Seen On */}
             <Box
               sx={{
-                display: { xs: "block", md: "block" },
+                display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -507,25 +520,24 @@ export default function Section1() {
               <Typography
                 variant="caption"
                 sx={{
-                  display: "flex",
+                  display: { xs: "block", md: "block" },
                   alignItems: "center",
                   justifyContent: "center",
                   fontStyle: "bold",
                   textTransform: "uppercase",
                   color: "#000",
+                  mb: 1,
                 }}
               >
                 AS SEEN ON
               </Typography>
 
-              {/* INFINITE SLIDER */}
+              {/* MOBILE SLIDER - Only visible on xs and sm screens */}
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
+                  display: { xs: "flex", md: "none" },
                   width: "100%",
+                  overflow: "hidden",
                   py: 1,
                 }}
               >
@@ -533,43 +545,94 @@ export default function Section1() {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 4,
-                    animation: "scroll 18s linear infinite",
-                    whiteSpace: "nowrap",
-
-                    // Duplicate content for perfect loop
-                    "& > *": {
-                      flexShrink: 0,
-                    },
-
-                    "@keyframes scroll": {
-                      "0%": {
-                        transform: "translateX(0)",
+                    gap: { xs: 3, sm: 4 },
+                    animation: "scrollMobile 25s linear infinite",
+                    width: "max-content",
+                    "@keyframes scrollMobile": {
+                      "0%": { transform: "translateX(0)" },
+                      "100%": {
+                        transform: "translateX(calc(-100% / 3))",
                       },
+                    },
+                  }}
+                >
+                  {[...Array(1)].map((_, setIndex) => (
+                    <Box
+                      key={setIndex}
+                      sx={{
+                        display: "flex",
+                        gap: { xs: 3, sm: 4 },
+                        flexShrink: 0,
+                      }}
+                    >
+                      {mediaLogos.map((logo, index) => (
+                        <Box
+                          key={`mobile-${setIndex}-${index}`}
+                          component="img"
+                          src={logo.src}
+                          alt="media-logo"
+                          sx={{
+                            height: { xs: 20, sm: 24 },
+                            width: "auto",
+                            objectFit: "contain",
+                            flexShrink: 0,
+                            opacity: 0.9,
+                          }}
+                        />
+                      ))}
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+
+              {/* DESKTOP SLIDER - Only visible on md screens and up */}
+              <Box
+                sx={{
+                  display: { xs: "none", md: "block" },
+                  width: "60vh",
+                  overflow: "hidden",
+                  py: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                    animation: "scrollDesktop 18s linear infinite",
+                    "@keyframes scrollDesktop": {
+                      "0%": { transform: "translateX(0)" },
                       "100%": {
                         transform: "translateX(-50%)",
                       },
                     },
                   }}
                 >
-                  {/* First loop */}
-                  {mediaLogos.map((logo, index) => (
-                    <Icon
-                      key={index}
-                      icon={logo.icon}
-                      style={{ fontSize: 40, color: "#000", opacity: 0.7 }}
-                    />
+                  {[...Array(2)].map((_, setIndex) => (
+                    <Box
+                      key={setIndex}
+                      sx={{
+                        display: "flex",
+                        gap: 6,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {mediaLogos.map((logo, index) => (
+                        <Box
+                          key={`desktop-${setIndex}-${index}`}
+                          component="img"
+                          src={logo.src}
+                          alt="media-logo"
+                          sx={{
+                            height: 30,
+                            objectFit: "contain",
+                            flexShrink: 0,
+                            opacity: 0.9,
+                          }}
+                        />
+                      ))}
+                    </Box>
                   ))}
-
-                  {/* Second loop (cloned for infinite scroll) */}
-                  {/* {mediaLogos.map((logo, index) => (
-                    <Icon
-                      key={`clone-${index}`}
-                      icon={logo.icon}
-                      style={{ fontSize: 40, color: "#666", opacity: 0.7 }}
-                    />
-                  ))}
-                   */}
                 </Box>
               </Box>
             </Box>
