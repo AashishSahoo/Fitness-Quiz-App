@@ -1,8 +1,8 @@
 import { Box, Button, Typography, Grid, Paper } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
-import ComparisonSection from "../../components/quiz/ComparisonSection ";
-import WeightLossGraph from "../../components/quiz/WeightLossGraph";
+import ComparisonSection from "../../components/promotion/ComparisonSection";
+import WeightLossGraph from "../../components/promotion/WeightLossGraph";
 import CurrentBodyMaleImg from "../../assets/quizQuestion/Q13/Q13M_Currentbody.png";
 import CurrentBodyFemaleImg from "../../assets/quizQuestion/Q13/Q13F_Currentbody.png";
 import DreamBodyFemaleImg from "../../assets/quizQuestion/Q13/Q13F_Dreambody.png";
@@ -211,8 +211,6 @@ export default function Section2() {
           </Typography>
         </Box>
 
-        {/* Grid Items */}
-        {/* Wrapper to constrain width */}
         <Box sx={{ display: "flex", justifyContent: "center", px: 2 }}>
           <Grid
             container
@@ -223,7 +221,6 @@ export default function Section2() {
             {FreeItems.map((item, index) => (
               <Grid key={index} item xs={12} sm={10} md={4}>
                 <Box sx={{ position: "relative" }}>
-                  {/* CARD */}
                   <Paper
                     elevation={3}
                     sx={{
@@ -235,7 +232,6 @@ export default function Section2() {
                       height: "100%",
                     }}
                   >
-                    {/* Image */}
                     <Box
                       sx={{
                         flexShrink: 0,
@@ -256,9 +252,7 @@ export default function Section2() {
                       />
                     </Box>
 
-                    {/* Text */}
                     <Box sx={{ flex: 1, textAlign: "left" }}>
-                      {/* Price */}
                       <Typography
                         sx={{
                           mb: 1,
@@ -301,7 +295,6 @@ export default function Section2() {
           </Grid>
         </Box>
 
-        {/* bottom decorative SVG (direct copy) */}
         <Box
           sx={{
             mt: 4,
@@ -348,7 +341,7 @@ export default function Section2() {
             mb: 4,
             mx: "auto",
             width: { xs: "100%", sm: "80%", md: "60%" },
-            textAlign: "center", // ensures text stays centered
+            textAlign: "center",
           }}
         >
           <Button
@@ -368,10 +361,8 @@ export default function Section2() {
           </Button>
 
           <Typography
-            // variant="h4"
             sx={{
               fontSize: "2rem",
-              // fontWeight: 600,
               mt: 1,
             }}
           >

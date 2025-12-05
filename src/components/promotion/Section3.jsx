@@ -6,7 +6,6 @@ export default function Section3() {
   return (
     <Box component="section" sx={{ py: 6 }}>
       <Container maxWidth="lg">
-        {/* Title */}
         <Box sx={{ textAlign: "center", mb: 3 }}>
           <Typography
             variant="h4"
@@ -16,7 +15,6 @@ export default function Section3() {
           </Typography>
         </Box>
 
-        {/* Subtext */}
         <Box sx={{ textAlign: "center", mb: 0 }}>
           <Typography sx={{ fontSize: "1.1rem" }}>
             Thousands of women have improved their health and body with Wall
@@ -30,7 +28,6 @@ export default function Section3() {
           </Typography>
         </Box>
 
-        {/* Benefit List */}
         <Box
           sx={{
             display: { xs: "none", sm: "flex" },
@@ -58,8 +55,6 @@ export default function Section3() {
             </Box>
           ))}
         </Box>
-
-        {/* Video Section */}
 
         <Box
           sx={{
@@ -93,7 +88,7 @@ export default function Section3() {
             controls
             preload="auto"
             style={{
-              width: "100%", // fills the card width
+              width: "100%",
               height: "auto",
               border: "none",
               outline: "none",
@@ -101,7 +96,6 @@ export default function Section3() {
           ></video>
         </Box>
 
-        {/* Button */}
         <Box sx={{ textAlign: "center" }}>
           <Button
             variant="contained"
@@ -120,7 +114,6 @@ export default function Section3() {
           </Button>
         </Box>
 
-        {/* Illustration */}
         <Box
           sx={{
             width: "40%",
@@ -130,7 +123,6 @@ export default function Section3() {
             alignItems: "center",
             mt: 2,
 
-            // Make SVG responsive
             "& svg": {
               width: "100%",
               height: "4vh",
@@ -139,7 +131,6 @@ export default function Section3() {
           }}
         >
           <svg focusable="false" aria-hidden="true" viewBox="0 0 6248 1172">
-            {/* entire SVG unchanged */}
             <path
               d="M1171.27 0.590088H0.450195V1171.41H1171.27V0.590088Z"
               fill="#06D300"

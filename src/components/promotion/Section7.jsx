@@ -5,7 +5,6 @@ export default function Section7() {
   return (
     <Box component="section" sx={{ py: 6 }}>
       <Container maxWidth="sm">
-        {/* Title */}
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography
             variant="h2"
@@ -17,7 +16,6 @@ export default function Section7() {
           </Typography>
         </Box>
 
-        {/* Quote */}
         <Box sx={{ mb: 5 }}>
           <Typography
             sx={{

@@ -55,7 +55,7 @@ export default function Section6() {
                 sx={{
                   borderRadius: 2,
                   overflow: "hidden",
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor: "#fff",
                 }}
               >
                 <Box>
@@ -73,13 +73,11 @@ export default function Section6() {
 
                 <CardContent>
                   <Grid container spacing={2}>
-                    {/* Name + Stars */}
                     <Grid item xs={7}>
                       <Typography variant="h3" sx={{ fontSize: 20 }}>
                         {item.name}
                       </Typography>
 
-                      {/* Rating */}
                       <Box sx={{ display: "flex", gap: 0.3, mt: 0.5 }}>
                         {[1, 2, 3, 4, 5].map((i) => (
                           <Icon
@@ -93,7 +91,6 @@ export default function Section6() {
                       </Box>
                     </Grid>
 
-                    {/* Time */}
                     <Grid item xs={5} sx={{ textAlign: "right" }}>
                       <Typography variant="h4" sx={{ fontSize: 20 }}>
                         {item.time}
@@ -101,7 +98,6 @@ export default function Section6() {
                     </Grid>
                   </Grid>
 
-                  {/* Review */}
                   <Typography
                     sx={{
                       mt: 2,

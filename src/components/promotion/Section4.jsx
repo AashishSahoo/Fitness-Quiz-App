@@ -6,7 +6,6 @@ import LowerStressAnxiety from "../../assets/pages/promotion/Section4LowerStress
 import ReducedBackPain from "../../assets/pages/promotion/Section4ReducedBackPain.jpg";
 import WeightLoss from "../../assets/pages/promotion/Section4WeightLoss.jpg";
 
-import React from "react";
 import {
   Box,
   Container,
@@ -59,7 +58,6 @@ export default function Section4name() {
   return (
     <Box component="section" sx={{ py: 6 }}>
       <Container maxWidth="md">
-        {/* Heading */}
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography variant="h4">
             Discover The Benefits of <b>Wall Pilates</b>
@@ -69,11 +67,13 @@ export default function Section4name() {
           </Typography>
         </Box>
 
-        {/* Cards Grid */}
         <Grid container spacing={3}>
           {Benefits.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card elevation={0} sx={{ borderRadius: 1 }}>
+              <Card
+                elevation={0}
+                sx={{ borderRadius: 1, backgroundColor: "#F5F5F5" }}
+              >
                 <img
                   src={item.img}
                   alt={item.title}

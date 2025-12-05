@@ -144,7 +144,6 @@ export default function Section10() {
             </List>
           </Box>
 
-          {/* Image Section */}
           <Box
             sx={{
               flex: 1,

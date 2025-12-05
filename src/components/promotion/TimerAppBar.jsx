@@ -125,7 +125,6 @@ export default function TimerAppBar() {
                 </Box>
               </Box>
 
-              {/* Separator - aligned with numbers only */}
               <Box
                 sx={{
                   fontSize: { xs: "18px", sm: "20px" },
@@ -136,7 +135,6 @@ export default function TimerAppBar() {
                 :
               </Box>
 
-              {/* Seconds Column */}
               <Box
                 sx={{
                   textAlign: "center",
@@ -165,7 +163,6 @@ export default function TimerAppBar() {
               </Box>
             </Box>
 
-            {/* Button */}
             <Button
               variant="contained"
               color="secondary"

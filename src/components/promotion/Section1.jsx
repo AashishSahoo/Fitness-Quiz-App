@@ -76,7 +76,6 @@ export default function Section1() {
     <Box sx={{ py: 6 }}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          {/* Left Side - Images */}
           <Grid item xs={12} md={6}>
             <Box
               sx={{
@@ -100,7 +99,6 @@ export default function Section1() {
                 gap: 2,
               }}
             >
-              {/* Icon Circle */}
               <Box
                 sx={{
                   width: 90,
@@ -120,7 +118,6 @@ export default function Section1() {
                 />
               </Box>
 
-              {/* Text Right Side */}
               <Typography
                 variant="body1"
                 sx={{
@@ -135,9 +132,7 @@ export default function Section1() {
             </Box>
           </Grid>
 
-          {/* Right Side - Content */}
           <Grid item xs={12} md={6}>
-            {/* Rating Section */}
             <Box
               sx={{
                 mb: 3,
@@ -165,7 +160,6 @@ export default function Section1() {
                   aria-hidden="true"
                   viewBox="0 0 6248 1172"
                 >
-                  {/* entire SVG unchanged */}
                   <path
                     d="M1171.27 0.590088H0.450195V1171.41H1171.27V0.590088Z"
                     fill="#06D300"
@@ -235,7 +229,6 @@ export default function Section1() {
               & <strong>tone</strong> your body from the comfort of your home!
             </Typography>
 
-            {/* Benefits List */}
             <List sx={{ mb: 3 }}>
               {benefits.map((benefit, index) => (
                 <ListItem key={index} sx={{ px: 0, py: 0 }}>
@@ -250,7 +243,6 @@ export default function Section1() {
               ))}
             </List>
 
-            {/* Promo Code Section */}
             <Box
               sx={{
                 mb: 3,
@@ -302,7 +294,6 @@ export default function Section1() {
               </Box>
             </Box>
 
-            {/* Pricing Plans */}
             <Box sx={{ mb: 3 }}>
               {plans.map((plan) => (
                 <Box
@@ -413,8 +404,6 @@ export default function Section1() {
                             label={plan.perDayDiscounted}
                             sx={{ backgroundColor: "#7061a2", color: "#fff" }}
                           />
-
-                          {/* {plan.perDayDiscounted} */}
                         </span>{" "}
                         <span style={{ fontSize: 12 }}>per day</span>
                       </Typography>
@@ -426,7 +415,6 @@ export default function Section1() {
                           textTransform: "none",
                           fontWeight: 700,
                           backgroundColor:
-                            // transparent
                             plan.buttonVariant === "contained"
                               ? "transparent"
                               : "#F68D2B",
@@ -452,7 +440,6 @@ export default function Section1() {
               ))}
             </Box>
 
-            {/* Terms Checkbox */}
             <Box sx={{ display: "flex", alignItems: "flex-start" }}>
               <Checkbox
                 checked={agreedToTerms}
@@ -478,7 +465,6 @@ export default function Section1() {
               </Typography>
             </Box>
 
-            {/* Secure Checkout */}
             <Box
               sx={{
                 display: "flex",
@@ -508,7 +494,6 @@ export default function Section1() {
           </Grid>
 
           <Grid item sm={12} lg={12}>
-            {/* As Seen On */}
             <Box
               sx={{
                 display: "flex",
@@ -532,7 +517,6 @@ export default function Section1() {
                 AS SEEN ON
               </Typography>
 
-              {/* MOBILE SLIDER - Only visible on xs and sm screens */}
               <Box
                 sx={{
                   display: { xs: "flex", md: "none" },
@@ -585,7 +569,6 @@ export default function Section1() {
                 </Box>
               </Box>
 
-              {/* DESKTOP SLIDER - Only visible on md screens and up */}
               <Box
                 sx={{
                   display: { xs: "none", md: "block" },

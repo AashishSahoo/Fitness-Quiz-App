@@ -6,7 +6,6 @@ export default function Section9() {
   return (
     <Box component="section" sx={{ py: 6 }}>
       <Container maxWidth="lg">
-        {/* Title */}
         <Box sx={{ textAlign: "center", mb: 3 }}>
           <Typography
             variant="h4"
@@ -15,8 +14,6 @@ export default function Section9() {
             Here's What <b>Our Users</b> Have To Say
           </Typography>
         </Box>
-
-        {/* Video Section */}
 
         <Box
           sx={{
@@ -63,7 +60,6 @@ export default function Section9() {
           </Button>
         </Box>
 
-        {/* Illustration */}
         <Box
           sx={{
             width: "40%",
@@ -82,7 +78,6 @@ export default function Section9() {
           }}
         >
           <svg focusable="false" aria-hidden="true" viewBox="0 0 6248 1172">
-            {/* entire SVG unchanged */}
             <path
               d="M1171.27 0.590088H0.450195V1171.41H1171.27V0.590088Z"
               fill="#06D300"

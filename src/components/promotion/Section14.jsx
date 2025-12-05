@@ -72,7 +72,6 @@ export default function Section14() {
             </Link>
           </Typography>
 
-          {/* ADDRESS */}
           <Typography
             variant="body1"
             sx={{
@@ -85,7 +84,6 @@ export default function Section14() {
             No. 16105764
           </Typography>
 
-          {/* COPYRIGHT */}
           <Typography
             variant="body1"
             sx={{

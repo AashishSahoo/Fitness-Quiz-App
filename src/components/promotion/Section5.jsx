@@ -49,7 +49,7 @@ export default function Section5() {
                     sx={{
                       borderRadius: 3,
                       overflow: "hidden",
-                      backgroundColor: "#f5f5f5",
+                      backgroundColor: "#fff",
                     }}
                   >
                     <CardContent>
@@ -143,7 +143,7 @@ export default function Section5() {
                     borderRadius: 3,
                     height: "100%",
                     overflow: "hidden",
-                    backgroundColor: "#f5f5f5",
+                    backgroundColor: "#fff",
                   }}
                 >
                   <CardContent sx={{ pb: 1 }}>
