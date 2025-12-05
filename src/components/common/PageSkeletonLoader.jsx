@@ -9,7 +9,6 @@ export default function PageSkeletonLoader() {
         backgroundColor: "#f5f5f5",
       }}
     >
-      {/* Top Bar Skeleton */}
       <Box
         sx={{
           width: "100%",
@@ -22,9 +21,7 @@ export default function PageSkeletonLoader() {
         <Skeleton variant="rectangular" width="100%" height={40} />
       </Box>
 
-      {/* Main Content */}
       <Container maxWidth="md" sx={{ mt: 2 }}>
-        {/* Main Image / Content Skeleton */}
         <Skeleton
           variant="rectangular"
           width="100%"

@@ -73,7 +73,7 @@ export default function Section1() {
   ];
 
   return (
-    <Box sx={{ py: 6, backgroundColor: "#fff" }}>
+    <Box sx={{ py: 6 }}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Left Side - Images */}
