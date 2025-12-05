@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Paper, CircularProgress } from "@mui/material";
-import ReviewCard from "../ReviewCard";
+import UserPost from "../../../assets/pages/quiz/UserPost.png";
 
 export default function ProcessingPage({ question, onContinue, answers }) {
   const [progress, setProgress] = useState(0);
@@ -117,7 +117,7 @@ export default function ProcessingPage({ question, onContinue, answers }) {
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <ReviewCard />
+        <img src={UserPost} alt="User_Post" loading="lazy" />
       </Box>
     </Box>
   );

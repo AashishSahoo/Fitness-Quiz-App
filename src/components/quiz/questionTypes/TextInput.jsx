@@ -95,10 +95,10 @@ export default function TextInput({ question, onContinue, answers }) {
             ),
           }}
           sx={{
-            width: { xs: "350px", sm: "350px", md: "350px" },
+            width: { xs: "200px", sm: "350px", md: "350px" },
             "& .MuiInputBase-input": {
               textAlign: "center",
-              fontSize: "3rem",
+              fontSize: { xs: "2rem", sm: "3rem", md: "3ren" },
               fontWeight: 600,
               paddingRight: "8px",
             },

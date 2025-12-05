@@ -7,7 +7,7 @@ import {
   Button,
   Box,
   Typography,
-  Backdrop,
+  FormHelperText,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 
@@ -220,8 +220,6 @@ export default function EmailCaptureDialog({ open, onSubmit }) {
             value={email}
             onChange={handleEmailChange}
             onKeyPress={handleKeyPress}
-            error={!!emailError}
-            helperText={emailError}
             sx={{
               maxWidth: { xs: "100%", sm: "300px" },
               "& .MuiOutlinedInput-root": {
@@ -258,6 +256,20 @@ export default function EmailCaptureDialog({ open, onSubmit }) {
             Get My Plan 👉
           </Button>
         </Box>
+        {emailError && (
+          <FormHelperText
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#ea1111ff",
+              mb: 2,
+            }}
+          >
+            {emailError}
+          </FormHelperText>
+        )}
 
         <Box
           sx={{

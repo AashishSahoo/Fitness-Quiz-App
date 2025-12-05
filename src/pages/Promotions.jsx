@@ -22,7 +22,7 @@ import Section13 from "../components/promotion/Section13";
 import Section14 from "../components/promotion/Section14";
 
 export default function Promotions() {
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState(true);
 
   const targetDate = new Date();
   targetDate.setMonth(targetDate.getMonth() + 1);
