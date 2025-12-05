@@ -9,20 +9,32 @@ export default function Section3() {
         <Box sx={{ textAlign: "center", mb: 3 }}>
           <Typography
             variant="h4"
-            sx={{ fontSize: { xs: "1.8rem", md: "2.4rem" } }}
+            sx={{ fontWeight: 400, fontSize: { xs: "22px", md: "34px" } }}
           >
             See How <b>Wall Pilates</b> Is Helping Body Transformations
           </Typography>
         </Box>
 
-        <Box sx={{ textAlign: "center", mb: 0 }}>
+        <Box
+          sx={{
+            textAlign: "center",
+            mb: 0,
+            display: { xs: "none", sm: "block" },
+          }}
+        >
           <Typography sx={{ fontSize: "1.1rem" }}>
             Thousands of women have improved their health and body with Wall
             Pilates.
           </Typography>
         </Box>
 
-        <Box sx={{ textAlign: "center", mb: 4 }}>
+        <Box
+          sx={{
+            textAlign: "center",
+            mb: 4,
+            display: { xs: "none", sm: "block" },
+          }}
+        >
           <Typography sx={{ fontSize: "1.1rem" }}>
             See how you could be the next success story...
           </Typography>

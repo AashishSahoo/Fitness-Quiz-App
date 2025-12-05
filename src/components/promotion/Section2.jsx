@@ -206,7 +206,10 @@ export default function Section2() {
         </Box>
 
         <Box sx={{ textAlign: "center", mb: 3 }}>
-          <Typography variant="h4" fontWeight={600}>
+          <Typography
+            variant="h4"
+            sx={{ fontSize: { xs: "24px", sm: "34px" } }}
+          >
             You will also get <b>FREE</b> 🎁
           </Typography>
         </Box>
@@ -347,7 +350,7 @@ export default function Section2() {
           <Button
             variant="contained"
             sx={{
-              width: { xs: "70%", sm: "35%", md: "25%" },
+              width: { xs: "70%", sm: "35%" },
               px: 5,
               py: 1.3,
               borderRadius: "10px",
@@ -362,7 +365,7 @@ export default function Section2() {
 
           <Typography
             sx={{
-              fontSize: "2rem",
+              fontSize: { xs: "24px", sm: "34px" },
               mt: 1,
             }}
           >
@@ -374,6 +377,7 @@ export default function Section2() {
               fontSize: "1rem",
               lineHeight: 1.7,
               maxWidth: "800px",
+              px: 4,
             }}
           >
             Wall Pilates is a refreshing blend of classic Pilates exercises with

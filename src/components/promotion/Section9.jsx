@@ -69,7 +69,6 @@ export default function Section9() {
             alignItems: "center",
             mt: 2,
 
-            // Make SVG responsive
             "& svg": {
               width: "100%",
               height: "4vh",

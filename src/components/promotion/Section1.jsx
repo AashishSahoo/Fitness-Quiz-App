@@ -73,7 +73,7 @@ export default function Section1() {
   ];
 
   return (
-    <Box sx={{ py: 6 }}>
+    <Box sx={{ py: { sm: 2, md: 6 } }}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
@@ -81,6 +81,7 @@ export default function Section1() {
               sx={{
                 display: { xs: "block", md: "block" },
                 overflow: "hidden",
+                mt: { sm: "-10px" },
               }}
             >
               <img
@@ -89,11 +90,12 @@ export default function Section1() {
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
             </Box>
+
             <Box
               sx={{
                 mt: 1,
                 p: 3,
-                display: "flex",
+                display: { xs: "none", md: "flex", lg: "flex" },
                 alignItems: "center",
                 borderRadius: 2,
                 gap: 2,
@@ -138,8 +140,9 @@ export default function Section1() {
                 mb: 3,
                 display: "flex",
                 alignItems: "center",
+                justifyContent: { xs: "center", md: "left" },
                 gap: 1,
-                flexWrap: "nowrap",
+                flexWrap: "wrap",
               }}
             >
               <Box
@@ -149,7 +152,7 @@ export default function Section1() {
                   justifyContent: "flex-start",
                   alignItems: "center",
                   svg: {
-                    width: "100%",
+                    width: { xs: 120, sm: 110, md: 100 },
                     height: "auto",
                     display: "block",
                   },
@@ -220,16 +223,40 @@ export default function Section1() {
               </Typography>
             </Box>
 
-            <Typography variant="h3" sx={{ mb: 1, color: "#333" }}>
-              <strong>Lose 10kg With Your Personal Plan</strong>
+            <Typography
+              variant="h3"
+              sx={{
+                mb: 1,
+                color: "#333",
+                textAlign: { xs: "center", sm: "left" },
+
+                fontSize: {
+                  xs: "28px",
+                  sm: "30px",
+                  md: "43px",
+                },
+                fontWeight: 900,
+              }}
+            >
+              Lose 10kg With Your Personal Plan
             </Typography>
 
-            <Typography variant="h6">
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: { xs: "center", sm: "left" },
+                fontSize: {
+                  xs: "18px",
+                  sm: "18px",
+                  md: "18px",
+                },
+              }}
+            >
               <strong>Lose weight</strong>, improve <strong>flexibility</strong>{" "}
               & <strong>tone</strong> your body from the comfort of your home!
             </Typography>
 
-            <List sx={{ mb: 3 }}>
+            <List sx={{ mb: 3, display: { xs: "none", sm: "block" } }}>
               {benefits.map((benefit, index) => (
                 <ListItem key={index} sx={{ px: 0, py: 0 }}>
                   <ListItemIcon sx={{ minWidth: 36 }}>
@@ -492,6 +519,48 @@ export default function Section1() {
               cancel. Unsubscribe anytime.
             </Typography>
           </Grid>
+
+          <Box
+            sx={{
+              p: 3,
+              display: { xs: "flex", sm: "none" },
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 2,
+              gap: 2,
+            }}
+          >
+            <Box
+              sx={{
+                width: 90,
+                height: 90,
+                minWidth: 90,
+                borderRadius: "50%",
+                backgroundColor: "#DDDDDD",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              <Icon
+                icon="simple-icons:fox"
+                style={{ fontSize: 65, color: "#000" }}
+              />
+            </Box>
+
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#666",
+                textAlign: "left",
+                lineHeight: 1.4,
+              }}
+            >
+              "Wall Pilates becomes a #1 home fitness trend for women: many have
+              already lost tens of pounds of excess weight"
+            </Typography>
+          </Box>
 
           <Grid item sm={12} lg={12}>
             <Box

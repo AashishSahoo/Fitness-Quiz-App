@@ -1,0 +1,354 @@
+# Fitness Quiz Application - Developer Documentation
+
+## Project Overview
+A React-based fitness quiz application with 33 questions spanning multiple categories, followed by a comprehensive promotions/offers page. Built with Vite, React Router, and Material-UI.
+
+---
+
+## Architecture
+
+### Two Main Pages:
+1. **Quiz Page** (`/`) - 33-question fitness assessment
+2. **Promotions Page** (`/promotions`) - Full offers/marketing page
+(fully responsive pages)
+
+---
+
+## Tech Stack
+- **Framework**: React 19.2.0 + Vite 7.2.4
+- **Routing**: React Router DOM 6.30.2
+- **UI Library**: Material-UI (MUI) 5.18.0
+- **Animations**: Framer Motion 12.23.25
+- **Icons**: Iconify React 6.0.2
+- **Charts**: Recharts 3.5.1
+- **Date Handling**: date-fns 4.1.0, MUI Date Pickers 8.19.0
+- **Carousel**: Swiper 12.0.3
+
+---
+
+## Project Structure
+
+```
+src/
+├── routes/
+│   └── AppRoutes.jsx          # Route configuration (lazy loading)
+├── pages/
+│   ├── QuizPage.jsx           # Main quiz page container
+│   └── Promotions.jsx         # Promotions/offers page
+├── components/
+│   ├── common/                # Shared components
+│   │   ├── TimerAppBar.jsx
+│   │   ├── MainAppBar.jsx
+│   │   ├── Header.jsx
+│   │   ├── SecureInfoSection.jsx
+│   │   ├── Footer.jsx
+│   │   ├── EmailCaptureDialog.jsx
+│   │   └── PageSkeletonLoader.jsx
+│   ├── quiz/
+│   │   ├── QuestionRouter.jsx # Routes to appropriate question type component
+│   │   └── questionTypes/     # Individual question type components
+│   │       ├── GenderSelection.jsx
+│   │       ├── SingleChoiceEmoji.jsx
+│   │       ├── SingleChoiceImage.jsx
+│   │       ├── MultipleChoiceEmoji.jsx
+│   │       ├── MultipleChoiceImage.jsx
+│   │       ├── MeasurementInput.jsx
+│   │       ├── TextInput.jsx
+│   │       ├── DateInput.jsx
+│   │       ├── InfoPage.jsx
+│   │       ├── SummaryPage.jsx
+│   │       ├── PredictionPage.jsx
+│   │       └── ProcessingPage.jsx
+│   └── promotion/
+│       ├── TimerAppBar.jsx
+│       └── Section1.jsx to Section14.jsx  # 14 sections of promotional content
+├── hooks/
+│   └── useQuizStorage.js      # Custom hook for localStorage management
+├── data/
+│   └── quizQuestions.js       # Quiz data structure (33 questions)
+└── assets/
+    └── quizQuestion/          # Question images organized by question ID
+```
+
+---
+
+## Quiz Flow & Data Management
+
+### LocalStorage Strategy
+**Key**: `quizStorage`
+
+**Structure**:
+```javascript
+{
+  currentIndex: 1,          // Current question (1-33)
+  previousIndex: 0,         // Previous question index
+  gender: "",               // User's selected gender ("male"/"female")
+  answers: {                // Map of questionId -> answer
+    1: "male",
+    2: "lose_weight",
+    // ... etc
+  }
+}
+```
+
+### Custom Hook: `useQuizStorage`
+Located: `src/hooks/useQuizStorage.js`
+
+**API**:
+- `quiz` - Current quiz state object
+- `updateQuiz(patch)` - Updates quiz state + syncs to localStorage
+- `back()` - Navigate to previous question
+
+**Key Features**:
+- Initializes from localStorage on mount
+- Auto-persists every state change
+- Provides single source of truth for quiz data
+
+---
+
+## Question Types & Components
+
+### 1. **gender-selection** → `GenderSelection.jsx`
+   - Visual gender selection with images
+   - Sets `quiz.gender` for conditional rendering later
+
+### 2. **single-choice** → `SingleChoiceEmoji.jsx` OR `SingleChoiceImage.jsx`
+   - Router decides based on `question.options[0]?.imgUrl`
+   - Emoji version: Text labels with emoji prefixes
+   - Image version: Visual cards with images
+
+### 3. **multi-choice** → `MultipleChoiceEmoji.jsx` OR `MultipleChoiceImage.jsx`
+   - Allows multiple selections
+   - "None of the above" option clears other selections
+
+### 4. **height-input** / **weight-input** → `MeasurementInput.jsx`
+   - Toggle between units (FT/CM, LBS/KG)
+   - Shows BMI calculation if `showBMI: true`
+
+### 5. **text-input** → `TextInput.jsx`
+   - Handles age, name, etc.
+   - Validation rules in question data
+
+### 6. **date-input** → `DateInput.jsx`
+   - MUI DatePicker integration
+   - Optional skip functionality
+
+### 7. **info-page** → `InfoPage.jsx`
+   - Informational screens with progress indicators
+   - Auto-advances on continue
+
+### 8. **summary-page** → `SummaryPage.jsx`
+   - Shows user profile summary
+   - Displays BMI if applicable
+
+### 9. **prediction-page** → `PredictionPage.jsx`
+   - Shows weight loss prediction graph
+   - Calculates target date
+
+### 10. **processing-page** → `ProcessingPage.jsx`
+    - Loading screen with animations
+    - Prepares transition to promotions
+
+---
+
+## Question Data Structure
+
+Located: `src/data/quizQuestions.js`
+
+**33 Questions** covering:
+- Demographics (gender, age, name)
+- Physical metrics (height, weight, build)
+- Goals & motivation
+- Lifestyle habits (exercise, diet, sleep, water intake)
+- Pain points & health concerns
+- Event tracking & reward preferences
+
+**Gender-Specific Images**:
+Questions 4 & 5 have `imgUrlMale` and `imgUrlFemale` properties that switch based on `quiz.gender`
+
+**Image Organization**:
+```
+assets/quizQuestion/
+├── Q1/
+│   ├── Q1Male.png
+│   └── Q1Female.png
+├── Q3/
+│   ├── Q3Option1.png to Q3Option4.png
+├── Q4/
+│   ├── Male/
+│   └── Female/
+└── ... (continues for all questions with images)
+```
+
+---
+
+## Navigation Flow
+
+### Quiz Progression:
+1. User answers question
+2. `handleContinue(questionId, answer)` called
+3. Updates `quiz.answers` + increments `currentIndex`
+4. When `currentIndex` reaches 33 → Navigate to `/promotions`
+
+### Back Navigation:
+- `handleBack()` decrements `currentIndex`
+- Previous answers preserved in localStorage
+- Can navigate back through entire quiz
+
+---
+
+## Promotions Page
+
+### Structure:
+14 independent sections (`Section1.jsx` - `Section14.jsx`) containing:
+- Hero sections
+- Feature showcases
+- Testimonials
+- Pricing tables
+- FAQ sections
+
+### Email Capture:
+- `EmailCaptureDialog` opens on page load (`openDialog: true`)
+- Captures user email before showing content
+- Can be closed after submission
+
+---
+
+## Key Implementation Details
+
+### Lazy Loading:
+```javascript
+const QuizPage = React.lazy(() => import("../pages/QuizPage"));
+```
+- Both main pages lazy loaded via React.lazy
+- `PageSkeletonLoader` shown during load
+
+### Progress Bar:
+- Linear progress: `(currentIndex / totalQuestions) * 100`
+- Visual feedback on quiz completion
+
+### Conditional Rendering:
+- Question type determined by `question.type`
+- `QuestionRouter` acts as switch/case for components
+- Gender-specific images switched in components
+
+### State Management:
+- No global state library (Redux/Context)
+- Single custom hook handles all quiz state
+- Promotions page mostly stateless presentation
+
+---
+
+## Running the Project
+
+```bash
+# Install dependencies
+npm install
+
+# Development server
+npm run dev
+
+# Production build
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+**Dev Server**: http://localhost:5173 (default Vite port)
+
+---
+
+## Common Development Tasks
+
+### Adding a New Question:
+1. Add question object to `quizQuestions.js`
+2. Import any images needed
+3. Assign appropriate `type`
+4. Create new component in `questionTypes/` if custom type needed
+5. Update `QuestionRouter.jsx` switch case
+
+### Adding New Promotion Section:
+1. Create `Section15.jsx` in `components/promotion/`
+2. Import and add to `Promotions.jsx`
+3. Style with MUI `sx` prop
+
+### Modifying Quiz Logic:
+- Edit `useQuizStorage.js` for storage changes
+- Edit `QuizPage.jsx` `handleContinue()` for flow changes
+
+### Styling Changes:
+- Global background: `QuizPage.jsx` `sx={{ backgroundColor: "#7061a2" }}`
+- Card styles: `QuestionRouter.jsx` Card component
+- Component-specific: Each component's `sx` prop
+
+---
+
+## Data Flow Diagram
+
+```
+User Interaction
+      ↓
+Question Component (e.g., SingleChoiceEmoji)
+      ↓
+onContinue(questionId, answer)
+      ↓
+handleContinue() in QuizPage
+      ↓
+updateQuiz() in useQuizStorage
+      ↓
+localStorage.setItem("quizStorage", ...)
+      ↓
+State Update → Re-render
+      ↓
+Next Question OR Navigate to /promotions
+```
+
+---
+
+## Important Notes
+
+1. **No API Calls**: All data stored client-side in localStorage
+2. **No Authentication**: Public quiz, no user accounts
+3. **Image Dependencies**: All question images must be in `assets/quizQuestion/`
+4. **Responsive Design**: MUI breakpoints used throughout (`xs`, `sm`, `md`, `lg`)
+5. **Browser Support**: Modern browsers (ES6+ required)
+
+---
+
+## Dependencies Explained
+
+**Core**:
+- `react` + `react-dom` - UI library
+- `vite` - Build tool & dev server
+
+**Routing**:
+- `react-router-dom` - Client-side routing
+
+**UI**:
+- `@mui/material` + `@emotion/*` - Material Design components
+- `@mui/x-date-pickers` - Date picker component
+- `@iconify/react` - Icon library
+
+**Features**:
+- `framer-motion` - Animation library 
+- `recharts` - Chart components (for prediction graph)
+- `swiper` - Carousel/slider (for promotions)
+- `date-fns` - Date manipulation utilities
+
+---
+
+## Contact & Support
+
+For questions about this codebase, refer to:
+- Question data structure in `quizQuestions.js`
+- Component implementations in `components/`
+- Hook logic in `useQuizStorage.js`
+
+---
+
+**Last Updated**: 6 December 2025
+**Version**: 0.0.0 (Initial Development)

@@ -12,12 +12,22 @@ import AppLogo from "../../assets/AppLogo.svg";
 export default function TimerAppBar() {
   const TOTAL_TIME = 15 * 60;
   const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : TOTAL_TIME));
     }, 1000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -29,6 +39,7 @@ export default function TimerAppBar() {
         borderBottom: "none",
         py: 1.5,
         zIndex: 1300,
+        transition: "all 0.3s ease-in-out",
       }}
     >
       <Container maxWidth="lg">
@@ -37,13 +48,12 @@ export default function TimerAppBar() {
           alignItems="center"
           justifyContent="space-between"
           textAlign="center"
+          sx={{
+            display: { xs: "none", md: "flex" },
+          }}
         >
-          <Grid item xs={12} sm={12} md={2}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}
-            >
+          <Grid item md={2}>
+            <Box display="flex" alignItems="center" justifyContent="flex-start">
               <Box
                 sx={{
                   height: "32px",
@@ -67,22 +77,19 @@ export default function TimerAppBar() {
 
           <Grid
             item
-            xs={12}
-            sm={6}
             md={6}
             sx={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: { xs: 2, sm: 3 },
+              gap: 3,
               flexWrap: "wrap",
-              mt: { xs: 2, md: 0 },
             }}
           >
             <Box
               sx={{
                 color: "#fff",
-                fontSize: { xs: "14px", sm: "16px" },
+                fontSize: "16px",
                 fontWeight: 500,
                 whiteSpace: "nowrap",
               }}
@@ -108,7 +115,8 @@ export default function TimerAppBar() {
               >
                 <Box
                   sx={{
-                    fontSize: { xs: "18px", sm: "25px", fontWeight: 900 },
+                    fontSize: "25px",
+                    fontWeight: 900,
                     lineHeight: 1,
                   }}
                 >
@@ -116,7 +124,7 @@ export default function TimerAppBar() {
                 </Box>
                 <Box
                   sx={{
-                    fontSize: { xs: "10px", sm: "12px" },
+                    fontSize: "12px",
                     opacity: 0.8,
                     mt: "4px",
                   }}
@@ -127,7 +135,7 @@ export default function TimerAppBar() {
 
               <Box
                 sx={{
-                  fontSize: { xs: "18px", sm: "20px" },
+                  fontSize: "20px",
                   fontWeight: 900,
                   lineHeight: 1,
                 }}
@@ -144,7 +152,7 @@ export default function TimerAppBar() {
               >
                 <Box
                   sx={{
-                    fontSize: { xs: "18px", sm: "25px" },
+                    fontSize: "25px",
                     lineHeight: 1,
                     fontWeight: 900,
                   }}
@@ -153,7 +161,7 @@ export default function TimerAppBar() {
                 </Box>
                 <Box
                   sx={{
-                    fontSize: { xs: "10px", sm: "12px" },
+                    fontSize: "12px",
                     opacity: 0.8,
                     mt: "4px",
                   }}
@@ -173,8 +181,8 @@ export default function TimerAppBar() {
                 backgroundColor: "#fff",
                 borderRadius: "10px",
                 fontWeight: 700,
-                px: { xs: 2, sm: 3 },
-                fontSize: { xs: "13px", sm: "14px" },
+                px: 3,
+                fontSize: "14px",
                 whiteSpace: "nowrap",
                 "&:hover": {
                   backgroundColor: "#f0f0f0",
@@ -185,6 +193,146 @@ export default function TimerAppBar() {
             </Button>
           </Grid>
         </Grid>
+
+        <Box
+          sx={{
+            display: { xs: "block", md: "none" },
+          }}
+        >
+          <Box
+            sx={{
+              display: isScrolled ? "none" : "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.3s ease-in-out",
+            }}
+          >
+            <Box
+              sx={{
+                height: "32px",
+                width: "120px",
+                borderRadius: "4px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                fontWeight: 600,
+              }}
+            >
+              <img
+                src={AppLogo}
+                alt="logo"
+                style={{ height: "32px", objectFit: "contain" }}
+              />
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              display: isScrolled ? "flex" : "none",
+              alignItems: "center",
+              justifyContent: "space-between",
+              transition: "all 0.3s ease-in-out",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "8px",
+                color: "#fff",
+              }}
+            >
+              <Box
+                sx={{
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "26px",
+                    fontWeight: 900,
+                    lineHeight: 1,
+                    fontWeight: 900,
+                  }}
+                >
+                  {String(Math.floor(timeLeft / 60)).padStart(2, "0")}
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "10px",
+                    mt: "3px",
+                  }}
+                >
+                  minutes
+                </Box>
+              </Box>
+
+              {/* Separator */}
+              <Box
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: 900,
+                  lineHeight: 1,
+                }}
+              >
+                :
+              </Box>
+
+              {/* Seconds box */}
+              <Box
+                sx={{
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "26px",
+                    fontWeight: 900,
+                    lineHeight: 1,
+                  }}
+                >
+                  {String(timeLeft % 60).padStart(2, "0")}
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "10px",
+                    mt: "3px",
+                  }}
+                >
+                  seconds
+                </Box>
+              </Box>
+            </Box>
+
+            {/* Button */}
+            <Button
+              variant="contained"
+              color="secondary"
+              size="medium"
+              sx={{
+                color: "#7061A2",
+                textTransform: "none",
+                backgroundColor: "#fff",
+                borderRadius: "8px",
+                fontWeight: 900,
+                px: { xs: 2, sm: 2.5 },
+                py: { xs: 0.5, sm: 0.75 },
+                fontSize: { xs: "14px", sm: "13px" },
+                whiteSpace: "nowrap",
+                "&:hover": {
+                  backgroundColor: "#f0f0f0",
+                },
+              }}
+            >
+              GET MY PLAN
+            </Button>
+          </Box>
+        </Box>
       </Container>
     </AppBar>
   );

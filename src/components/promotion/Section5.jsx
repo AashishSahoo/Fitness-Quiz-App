@@ -28,7 +28,10 @@ export default function Section5() {
     <Box component="section" sx={{ py: 8 }}>
       <Container maxWidth="md">
         <Box sx={{ textAlign: "center", mb: 5 }}>
-          <Typography variant="h4">
+          <Typography
+            variant="h4"
+            sx={{ fontSize: { xs: "22px", md: "34px" } }}
+          >
             Meet the <b>Happy</b> Women Who Use Wall Pilates
           </Typography>
         </Box>

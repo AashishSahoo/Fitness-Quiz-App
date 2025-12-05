@@ -10,6 +10,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import Applogo from "../../assets/Applogo2.svg";
 
 export default function EmailCaptureDialog({ open, onSubmit }) {
   const [email, setEmail] = useState("");
@@ -83,7 +84,7 @@ export default function EmailCaptureDialog({ open, onSubmit }) {
           pb: 1,
         }}
       >
-        Wall pilates
+        <img src={Applogo} alt="applogo" loading="lazy" />
       </DialogTitle>
 
       <DialogContent sx={{ px: { xs: 2, sm: 3 }, pb: 3 }}>

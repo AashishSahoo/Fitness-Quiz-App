@@ -157,11 +157,12 @@ export default function Section13() {
       <Box
         maxWidth="sm"
         sx={{
-          width: "40%",
+          width: { xs: "80%", sm: "40%" },
           mx: "auto",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          textAlign: "center",
           mt: 4,
         }}
       >

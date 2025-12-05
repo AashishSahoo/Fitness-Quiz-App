@@ -59,7 +59,10 @@ export default function Section4name() {
     <Box component="section" sx={{ py: 6 }}>
       <Container maxWidth="md">
         <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Typography variant="h4">
+          <Typography
+            variant="h4"
+            sx={{ fontSize: { xs: "22px", md: "34px" } }}
+          >
             Discover The Benefits of <b>Wall Pilates</b>
           </Typography>
           <Typography variant="body1" sx={{ mt: 1 }}>
@@ -89,8 +92,8 @@ export default function Section4name() {
                   <Typography
                     variant="h3"
                     sx={{
-                      fontSize: "1.5rem",
-                      fontWeight: 700,
+                      fontSize: { xs: "18px", md: "20px" },
+                      fontWeight: "600",
                       mb: 1,
                       textAlign: "center",
                     }}
