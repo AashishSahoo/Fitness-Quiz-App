@@ -73,11 +73,27 @@ export default function Section12() {
                     },
                   }}
                 >
-                  <Icon
-                    icon="mdi:help-circle"
-                    width={26}
-                    style={{ color: "#7061A2" }}
-                  />
+                  <Box
+                    sx={{
+                      width: { xs: 30, sm: 30, md: 26 },
+                      height: { xs: 30, sm: 30, md: 26 },
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Icon
+                      icon="mdi:help-circle"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        fontSize: "inherit",
+                        color: "#7061A2",
+                      }}
+                    />
+                  </Box>
+
                   <Typography sx={{ fontSize: "1rem", fontWeight: 500 }}>
                     {item.q}
                   </Typography>
